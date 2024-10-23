@@ -1,6 +1,9 @@
 export default function Square({ value, handleClick }) {
   return (
-    <button onClick={handleClick} className="border size-20">
+    <button
+      onClick={handleClick}
+      className="bg-semi-dark-navy size-24 rounded-lg"
+    >
       {value}
     </button>
   );

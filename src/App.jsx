@@ -1,6 +1,8 @@
 import { createRoot } from "react-dom/client";
 import Square from "./Square";
 import { useState } from "react";
+import Score from "./Score";
+import Header from "./Header";
 
 const App = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
@@ -10,41 +12,33 @@ const App = () => {
   let winner = checkWinner(squares);
 
   return (
-    <div className="flex items-center flex-col">
-      <h1 className="my-10 text-4xl">Tic Tac Toe</h1>
-      {winner ? (
-        <div>
-          <p className="">{`The winner is ${winner}`}</p>
-          <button className="border border-gray-600 p-2" onClick={resetGame}>
-            Reset
-          </button>
+    <div className="bg-dark-navy h-screen w-screen">
+      <main className="w-max mx-auto pt-6 px-6 pb-32">
+        <Header isXNext={isXNext} handleReset={resetGame} />
+        {winner ? (
+          <div>
+            <p className="">{`The winner is ${winner}`}</p>
+            <button className="border border-gray-600 p-2" onClick={resetGame}>
+              Reset
+            </button>
+          </div>
+        ) : (
+          ""
+        )}
+
+        <div className="grid grid-cols-3 gap-5">
+          {squares.map((value, i) => {
+            return (
+              <Square
+                key={`square-${i}`}
+                value={value}
+                handleClick={() => clickSquare(i)}
+              />
+            );
+          })}
         </div>
-      ) : (
-        ""
-      )}
-      <div className="grid grid-cols-3 gap-2">
-        {squares.map((value, i) => {
-          return (
-            <Square
-              key={`square-${i}`}
-              value={value}
-              handleClick={() => clickSquare(i)}
-            />
-          );
-        })}
-        <div className="bg-gray-200">
-          <p>X</p>
-          <p>{score.x}</p>
-        </div>
-        <div className="bg-gray-200">
-          <p>Ties</p>
-          <p>{score.ties}</p>
-        </div>
-        <div className="bg-gray-200">
-          <p>O</p>
-          <p>{score.o}</p>
-        </div>
-      </div>
+        <Score currScore={score} />
+      </main>
     </div>
   );
 
@@ -90,9 +84,8 @@ const App = () => {
   function resetGame() {
     if (winner) {
       score[winner] += 1;
-    } else {
-      score.ties += 1;
     }
+
     setScore(score);
     setSquares(Array(9).fill(null));
     setIsXNext(true);
