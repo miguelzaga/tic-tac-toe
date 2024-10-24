@@ -3,6 +3,7 @@ import Square from "./Square";
 import { useState } from "react";
 import Score from "./Score";
 import Header from "./Header";
+import Modal from "./Modal";
 
 const App = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
@@ -15,16 +16,7 @@ const App = () => {
     <div className="bg-dark-navy h-screen w-screen">
       <main className="w-max mx-auto pt-6 px-6 pb-32">
         <Header isXNext={isXNext} handleReset={resetGame} />
-        {winner ? (
-          <div>
-            <p className="">{`The winner is ${winner}`}</p>
-            <button className="border border-gray-600 p-2" onClick={resetGame}>
-              Reset
-            </button>
-          </div>
-        ) : (
-          ""
-        )}
+        {winner ? <Modal status={winner} handleReset={resetGame} /> : ""}
 
         <div className="grid grid-cols-3 gap-5">
           {squares.map((value, i) => {
