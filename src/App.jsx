@@ -16,7 +16,7 @@ const App = () => {
     <div className="bg-dark-navy h-screen w-screen">
       <main className="w-max mx-auto pt-6 px-6 pb-32">
         <Header isXNext={isXNext} handleReset={resetGame} />
-        {winner ? <Modal status={winner} handleReset={resetGame} /> : ""}
+        {winner ? <Modal player={winner} handleReset={resetGame} /> : ""}
 
         <div className="grid grid-cols-3 gap-5">
           {squares.map((value, i) => {
