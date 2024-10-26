@@ -12,11 +12,15 @@ export default function Header({ isXNext, handleReset }) {
   return (
     <header className="grid grid-cols-3 gap-5 mb-16">
       <img className="" src={logo} alt="logo" />
-      <p className="text-silver font-bold bg-semi-dark-navy w-24 h-10 flex justify-center items-center rounded-md">
+      <p
+        className="text-silver font-bold bg-semi-dark-navy w-24 h-10 flex 
+      justify-center items-center rounded-md shadow-custom-sm shadow-dark-navy-shadow pb-1"
+      >
         {nextTurn} TURN
       </p>
       <button
-        className="bg-silver rounded-md size-10 flex justify-center items-center ml-auto"
+        className="bg-silver rounded-md size-10 flex justify-center items-center ml-auto
+        shadow-custom-sm shadow-silver-shadow pb-1"
         onClick={handleReset}
       >
         <img className="size-4" src={iconRestart} alt="restart" />
