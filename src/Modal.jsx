@@ -16,13 +16,15 @@ export default function Modal({ player, handleReset }) {
     <div className="uppercase absolute w-screen h-screen top-0 left-0 bg-black bg-opacity-50 flex items-center">
       <div className="bg-semi-dark-navy w-full flex flex-col items-center text-center">
         <div className="pt-10 pb-12">
-          <p className="mb-4 text-silver font-bold">{`The winner is ...`}</p>
-          <div className="flex items-center mb-6 gap-2">
+          <p className="mb-4 text-silver font-bold">
+            {player === "tie" ? "" : `The winner is ...`}
+          </p>
+          <div className="flex justify-center items-center mb-6 gap-2">
             {icon}
             <p
               className={`text-2xl leading-none font-extrabold tracking-widest ${textColor}`}
             >
-              {` takes the round`}
+              {player === "tie" ? "Round tied" : "Takes the round"}
             </p>
           </div>
           <div className=" flex gap-4 leading-none justify-center text-dark-navy">
@@ -37,7 +39,7 @@ export default function Modal({ player, handleReset }) {
               shadow-custom-sm shadow-light-yellow-shadow"
               onClick={handleReset}
             >
-              Reset
+              Next round
             </button>
           </div>
         </div>

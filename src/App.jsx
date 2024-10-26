@@ -35,7 +35,7 @@ const App = () => {
   );
 
   function clickSquare(i) {
-    if (squares[i] || checkWinner(squares)) {
+    if (squares[i] || winner) {
       return;
     }
     const newSquares = squares.slice();
@@ -71,6 +71,13 @@ const App = () => {
         return position[a];
       }
     }
+
+    for (let i = 0; i < position.length; i++) {
+      if (!position[i]) {
+        return;
+      }
+    }
+    return "tie";
   }
 
   function resetGame() {
