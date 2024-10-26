@@ -30,13 +30,15 @@ export default function Modal({ player, handleReset }) {
           <div className=" flex gap-4 leading-none justify-center text-dark-navy">
             <button
               className="font-bold uppercase bg-silver h-12 p-4 rounded-lg 
-            shadow-custom-sm shadow-silver-shadow"
+            shadow-custom-sm shadow-silver-shadow
+            hover:bg-silver-hover"
             >
               Quit
             </button>
             <button
               className="font-bold uppercase bg-light-yellow h-12 p-4 rounded-lg
-              shadow-custom-sm shadow-light-yellow-shadow"
+              shadow-custom-sm shadow-light-yellow-shadow
+              hover:bg-light-yellow-hover"
               onClick={handleReset}
             >
               Next round

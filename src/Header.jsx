@@ -20,7 +20,8 @@ export default function Header({ isXNext, handleReset }) {
       </p>
       <button
         className="bg-silver rounded-md size-10 flex justify-center items-center ml-auto
-        shadow-custom-sm shadow-silver-shadow pb-1"
+        shadow-custom-sm shadow-silver-shadow pb-1
+        hover:bg-silver-hover"
         onClick={handleReset}
       >
         <img className="size-4" src={iconRestart} alt="restart" />

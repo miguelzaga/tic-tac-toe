@@ -10,7 +10,7 @@ const App = () => {
   const [isXNext, setIsXNext] = useState(true);
   const [score, setScore] = useState({ x: 0, ties: 0, o: 0 });
 
-  let winner = checkWinner(squares);
+  let [winner, winningPosition] = checkWinner(squares);
 
   return (
     <div className="bg-dark-navy h-screen w-screen">
@@ -20,11 +20,16 @@ const App = () => {
 
         <div className="grid grid-cols-3 gap-5">
           {squares.map((value, i) => {
+            let winnerPosition;
+            if (winningPosition && winningPosition.includes(i)) {
+              winnerPosition = winner;
+            }
             return (
               <Square
                 key={`square-${i}`}
                 value={value}
                 handleClick={() => clickSquare(i)}
+                winner={winnerPosition}
               />
             );
           })}
@@ -68,16 +73,16 @@ const App = () => {
         position[a] === position[b] &&
         position[a] === position[c]
       ) {
-        return position[a];
+        return [position[a], winningPositions[i]];
       }
     }
 
     for (let i = 0; i < position.length; i++) {
       if (!position[i]) {
-        return;
+        return [null, null];
       }
     }
-    return "tie";
+    return ["tie", null];
   }
 
   function resetGame() {

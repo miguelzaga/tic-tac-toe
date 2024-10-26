@@ -17,6 +17,7 @@ module.exports = {
       "silver-shadow": "#6B8997",
       "light-blue": "#31C3BD",
       "light-blue-hover": "#65E9E4",
+      "light-blue-shadow": "#118C87",
       "light-yellow": "#F2B137",
       "light-yellow-hover": "#FFC860",
       "light-yellow-shadow": "#CC8B13",
