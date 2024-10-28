@@ -2,15 +2,8 @@ import iconX from "../assets/icon-x.svg";
 import iconO from "../assets/icon-o.svg";
 
 export default function Modal({ player, handleReset }) {
-  let icon;
-  let textColor = "text-silver";
-  if (player === "x") {
-    icon = <img className="w-7" src={iconX} alt="X" />;
-    textColor = "text-light-blue";
-  } else if (player === "o") {
-    icon = <img className="w-7" src={iconO} alt="X" />;
-    textColor = "text-light-yellow";
-  }
+  let icon = getIcon(player);
+  let textColor = getTextColor(player);
 
   return (
     <div className="uppercase absolute w-screen h-screen top-0 left-0 bg-black bg-opacity-50 flex items-center">
@@ -48,4 +41,24 @@ export default function Modal({ player, handleReset }) {
       </div>
     </div>
   );
+
+  function getTextColor(player) {
+    let textColor = "text-silver";
+    if (player === "x") {
+      textColor = "text-light-blue";
+    } else if (player === "o") {
+      textColor = "text-light-yellow";
+    }
+    return textColor;
+  }
+
+  function getIcon(player) {
+    let icon;
+    if (player === "x") {
+      icon = iconX;
+    } else if (player === "o") {
+      icon = iconO;
+    }
+    return <img className="w-7" src={icon} alt={player} />;
+  }
 }
