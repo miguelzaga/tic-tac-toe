@@ -6,32 +6,26 @@ export default function Modal({ player, handleReset }) {
   let textColor = getTextColor(player);
 
   return (
-    <div className="uppercase absolute w-screen h-screen top-0 left-0 bg-black bg-opacity-50 flex items-center">
-      <div className="bg-semi-dark-navy w-full flex flex-col items-center text-center">
-        <div className="pt-10 pb-12">
-          <p className="mb-4 text-silver font-bold">
+    <div className="absolute left-0 top-0 flex h-screen w-screen items-center bg-black bg-opacity-50 uppercase">
+      <div className="flex w-full flex-col items-center bg-semi-dark-navy text-center">
+        <div className="pb-12 pt-10">
+          <p className="mb-4 font-bold text-silver">
             {player === "tie" ? "" : `The winner is ...`}
           </p>
-          <div className="flex justify-center items-center mb-6 gap-2">
+          <div className="mb-6 flex items-center justify-center gap-2">
             {icon}
             <p
-              className={`text-2xl leading-none font-extrabold tracking-widest ${textColor}`}
+              className={`text-2xl font-extrabold leading-none tracking-widest ${textColor}`}
             >
               {player === "tie" ? "Round tied" : "Takes the round"}
             </p>
           </div>
-          <div className=" flex gap-4 leading-none justify-center text-dark-navy">
-            <button
-              className="font-bold uppercase bg-silver h-12 p-4 rounded-lg 
-            shadow-custom-sm shadow-silver-shadow
-            hover:bg-silver-hover"
-            >
+          <div className="flex justify-center gap-4 leading-none text-dark-navy">
+            <button className="h-12 rounded-lg bg-silver p-4 font-bold uppercase shadow-custom-sm shadow-silver-shadow hover:bg-silver-hover">
               Quit
             </button>
             <button
-              className="font-bold uppercase bg-light-yellow h-12 p-4 rounded-lg
-              shadow-custom-sm shadow-light-yellow-shadow
-              hover:bg-light-yellow-hover"
+              className="h-12 rounded-lg bg-light-yellow p-4 font-bold uppercase shadow-custom-sm shadow-light-yellow-shadow hover:bg-light-yellow-hover"
               onClick={handleReset}
             >
               Next round

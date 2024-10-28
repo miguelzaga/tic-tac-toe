@@ -8,11 +8,7 @@ export default function Square({ value, handleClick, winner }) {
   return (
     <button
       onClick={handleClick}
-      className={`
-        bg-${color ?? "semi-dark-navy"} 
-        shadow-${color ?? "dark-navy"}-shadow
-        size-24 rounded-lg flex justify-center 
-        items-center shadow-custom-lg pb-2`}
+      className={` bg-${color ?? "semi-dark-navy"} shadow-${color ?? "dark-navy"}-shadow flex size-24 items-center justify-center rounded-lg pb-2 shadow-custom-lg`}
     >
       {icon ?? ""}
     </button>

@@ -13,8 +13,8 @@ const App = () => {
   let [winner, winningPosition] = checkWinner(squares);
 
   return (
-    <div className="bg-dark-navy h-screen w-screen">
-      <main className="w-max mx-auto pt-6 px-6 pb-32">
+    <div className="h-screen w-screen bg-dark-navy">
+      <main className="mx-auto w-max px-6 pb-32 pt-6">
         <Header isXNext={isXNext} handleReset={resetGame} />
         {winner ? <Modal player={winner} handleReset={resetGame} /> : ""}
 
