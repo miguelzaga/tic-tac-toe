@@ -11,7 +11,7 @@ export default function Score({ currScore }) {
 function ScoreCell({ title, score, bgColor }) {
   return (
     <div
-      className={`rounded-lg py-3 text-center leading-none text-dark-navy ${bgColor}`}
+      className={`rounded-10 py-3 text-center leading-none text-dark-navy ${bgColor}`}
     >
       <p className="text-xs uppercase tracking-wider">{title}</p>
       <p className="text-xl font-bold leading-none">{score}</p>
