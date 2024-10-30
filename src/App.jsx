@@ -4,6 +4,7 @@ import Score from "./Score";
 import Header from "./Header";
 import Modal from "./Modal";
 import Board from "./Board";
+import logo from "../assets/logo.svg";
 
 const App = () => {
   const [isMainMenu, setIsMainMenu] = useState(true);
@@ -15,14 +16,35 @@ const App = () => {
 
   return (
     <div className="h-screen w-screen bg-dark-navy">
-      <main className="mx-auto w-max px-6 pb-32 pt-6">
+      <main className="mx-auto max-w-[460px] px-6 pb-32 pt-6">
         {isMainMenu ? (
-          <>
-            <h1>Main Menu</h1>
-            <button onClick={() => setIsMainMenu(false)}>New Game</button>
-          </>
+          <div className="mt-[119px] space-y-8">
+            <img className="mx-auto" src={logo} alt="logo" />
+            <div className="rounded-15 bg-semi-dark-navy p-6 text-center uppercase text-silver shadow-custom-lg shadow-dark-navy-shadow">
+              <h1 className="mb-6 font-bold">Pick player 1&apos;s mark</h1>
+              <div className="mb-4 rounded-10 bg-dark-navy">
+                <button>X</button>
+                <button>O</button>
+              </div>
+              <p className="pt-px text-sm">Remember: X goes first</p>
+            </div>
+            <div className="flex flex-col gap-4">
+              <button
+                className="rounded-15 h-14 bg-light-yellow pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-yellow-shadow"
+                onClick={() => setIsMainMenu(false)}
+              >
+                New Game (vs CPU)
+              </button>
+              <button
+                className="rounded-15 h-14 bg-light-blue pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-blue-shadow"
+                onClick={() => setIsMainMenu(false)}
+              >
+                New Game (vs Player)
+              </button>
+            </div>
+          </div>
         ) : (
-          <>
+          <div className="mx-auto w-max">
             <Header isXNext={isXNext} handleReset={resetGame} />
             {winner ? (
               <Modal
@@ -40,9 +62,10 @@ const App = () => {
               squares={squares}
               winningPosition={winningPosition}
               clickSquare={clickSquare}
+              winner={winner}
             />
             <Score currScore={score} />
-          </>
+          </div>
         )}
       </main>
     </div>
