@@ -1,11 +1,12 @@
 import { createRoot } from "react-dom/client";
-import Square from "./Square";
 import { useState } from "react";
 import Score from "./Score";
 import Header from "./Header";
 import Modal from "./Modal";
+import Board from "./Board";
 
 const App = () => {
+  const [isMainMenu, setIsMainMenu] = useState(true);
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
   const [score, setScore] = useState({ x: 0, ties: 0, o: 0 });
@@ -15,26 +16,34 @@ const App = () => {
   return (
     <div className="h-screen w-screen bg-dark-navy">
       <main className="mx-auto w-max px-6 pb-32 pt-6">
-        <Header isXNext={isXNext} handleReset={resetGame} />
-        {winner ? <Modal player={winner} handleReset={resetGame} /> : ""}
-
-        <div className="grid grid-cols-3 gap-5">
-          {squares.map((value, i) => {
-            let winnerPosition;
-            if (winningPosition && winningPosition.includes(i)) {
-              winnerPosition = winner;
-            }
-            return (
-              <Square
-                key={`square-${i}`}
-                value={value}
-                handleClick={() => clickSquare(i)}
-                winner={winnerPosition}
+        {isMainMenu ? (
+          <>
+            <h1>Main Menu</h1>
+            <button onClick={() => setIsMainMenu(false)}>New Game</button>
+          </>
+        ) : (
+          <>
+            <Header isXNext={isXNext} handleReset={resetGame} />
+            {winner ? (
+              <Modal
+                player={winner}
+                handleReset={resetGame}
+                handleQuit={() => {
+                  resetGame();
+                  setIsMainMenu(true);
+                }}
               />
-            );
-          })}
-        </div>
-        <Score currScore={score} />
+            ) : (
+              ""
+            )}
+            <Board
+              squares={squares}
+              winningPosition={winningPosition}
+              clickSquare={clickSquare}
+            />
+            <Score currScore={score} />
+          </>
+        )}
       </main>
     </div>
   );

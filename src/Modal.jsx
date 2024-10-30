@@ -1,7 +1,7 @@
 import iconX from "../assets/icon-x.svg";
 import iconO from "../assets/icon-o.svg";
 
-export default function Modal({ player, handleReset }) {
+export default function Modal({ player, handleReset, handleQuit }) {
   let icon = getIcon(player);
   let textColor = getTextColor(player);
 
@@ -21,7 +21,10 @@ export default function Modal({ player, handleReset }) {
             </p>
           </div>
           <div className="flex justify-center gap-4 leading-none text-dark-navy">
-            <button className="h-12 rounded-lg bg-silver p-4 font-bold uppercase shadow-custom-sm shadow-silver-shadow hover:bg-silver-hover">
+            <button
+              className="h-12 rounded-lg bg-silver p-4 font-bold uppercase shadow-custom-sm shadow-silver-shadow hover:bg-silver-hover"
+              onClick={handleQuit}
+            >
               Quit
             </button>
             <button
