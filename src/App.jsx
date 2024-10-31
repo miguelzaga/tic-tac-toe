@@ -8,10 +8,10 @@ import Menu from "./Menu";
 
 const App = () => {
   const [isMainMenu, setIsMainMenu] = useState(true);
-  const [squares, setSquares] = useState(Array(9).fill(null));
   const [isXNext, setIsXNext] = useState(true);
-  const [score, setScore] = useState({ x: 0, ties: 0, o: 0 });
   const [isP1X, setIsP1X] = useState(false);
+  const [squares, setSquares] = useState(Array(9).fill(null));
+  const [score, setScore] = useState({ x: 0, ties: 0, o: 0 });
 
   let [winner, winningPosition] = checkWinner(squares);
 
@@ -31,11 +31,7 @@ const App = () => {
               <Modal
                 winner={winner}
                 handleReset={resetGame}
-                handleQuit={() => {
-                  resetGame();
-                  setScore({ x: 0, ties: 0, o: 0 });
-                  setIsMainMenu(true);
-                }}
+                handleQuit={quitGame}
                 isP1X={isP1X}
               />
             ) : (
@@ -108,6 +104,12 @@ const App = () => {
     setScore(score);
     setSquares(Array(9).fill(null));
     setIsXNext(true);
+  }
+
+  function quitGame() {
+    resetGame();
+    setScore({ x: 0, ties: 0, o: 0 });
+    setIsMainMenu(true);
   }
 };
 
