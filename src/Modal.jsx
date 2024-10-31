@@ -1,23 +1,31 @@
 import iconX from "../assets/icon-x.svg";
 import iconO from "../assets/icon-o.svg";
 
-export default function Modal({ player, handleReset, handleQuit }) {
-  let icon = getIcon(player);
-  let textColor = getTextColor(player);
+export default function Modal({ winner, handleReset, handleQuit, isP1X }) {
+  let icon = getIcon(winner);
+  let textColor = getTextColor(winner);
+  let marksWinner;
+  if (winner) {
+    if ((winner === "x" && isP1X) || (winner === "o" && !isP1X)) {
+      marksWinner = "Player 1";
+    } else {
+      marksWinner = "Player 2";
+    }
+  }
 
   return (
     <div className="absolute left-0 top-0 flex h-screen w-screen items-center bg-black bg-opacity-50 uppercase">
       <div className="flex w-full flex-col items-center bg-semi-dark-navy text-center">
         <div className="pb-12 pt-10">
           <p className="mb-4 font-bold text-silver">
-            {player === "tie" ? "" : `The winner is ...`}
+            {winner === "tie" ? "" : `${marksWinner} wins!`}
           </p>
           <div className="mb-6 flex items-center justify-center gap-2">
             {icon}
             <p
               className={`text-2xl font-extrabold leading-none tracking-widest ${textColor}`}
             >
-              {player === "tie" ? "Round tied" : "Takes the round"}
+              {winner === "tie" ? "Round tied" : "Takes the round"}
             </p>
           </div>
           <div className="flex justify-center gap-4 leading-none text-dark-navy">
@@ -55,6 +63,8 @@ export default function Modal({ player, handleReset, handleQuit }) {
       icon = iconX;
     } else if (player === "o") {
       icon = iconO;
+    } else {
+      return;
     }
     return <img className="w-7" src={icon} alt={player} />;
   }

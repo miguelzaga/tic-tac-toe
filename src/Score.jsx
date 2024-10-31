@@ -1,9 +1,17 @@
-export default function Score({ currScore }) {
+export default function Score({ currScore, isP1X }) {
   return (
     <div className="child- mt-5 grid grid-cols-3 gap-5">
-      <ScoreCell title="X" score={currScore.x} bgColor="bg-light-blue" />
+      <ScoreCell
+        title={`X (${isP1X ? "P1" : "P2"})`}
+        score={currScore.x}
+        bgColor="bg-light-blue"
+      />
       <ScoreCell title="Ties" score={currScore.ties} bgColor="bg-silver" />
-      <ScoreCell title="O" score={currScore.o} bgColor="bg-light-yellow" />
+      <ScoreCell
+        title={`O (${!isP1X ? "P1" : "P2"})`}
+        score={currScore.o}
+        bgColor="bg-light-yellow"
+      />
     </div>
   );
 }
