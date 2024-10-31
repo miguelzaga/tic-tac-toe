@@ -5,7 +5,7 @@ export default function Square({ value, handleClick, winner }) {
   return (
     <button
       onClick={handleClick}
-      className={`bg-${color ?? "semi-dark-navy"} shadow-${color ?? "dark-navy"}-shadow rounded-10 flex size-24 items-center justify-center pb-2 shadow-custom-lg`}
+      className={`bg-${color ?? "semi-dark-navy"} shadow-${color ?? "dark-navy"}-shadow flex size-24 items-center justify-center rounded-10 pb-2 shadow-custom-lg`}
     >
       {icon ?? ""}
     </button>
@@ -31,8 +31,6 @@ export default function Square({ value, handleClick, winner }) {
       icon = (
         <svg
           viewBox="0 0 65 65"
-          width="64"
-          height="64"
           xmlns="http://www.w3.org/2000/svg"
           className={`${winner === "o" ? "text-dark-navy" : "text-light-yellow"} w-10`}
         >
