@@ -5,7 +5,10 @@ export default function Board({
   clickSquare,
   squares,
   winner,
+  cpuPlay,
 }) {
+  cpuPlay();
+
   return (
     <div className="grid grid-cols-3 gap-5">
       {squares.map((value, i) => {

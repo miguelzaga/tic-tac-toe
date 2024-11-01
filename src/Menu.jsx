@@ -1,6 +1,11 @@
 import logo from "../assets/logo.svg";
 
-export default function Menu({ isP1X, setIsP1X, setIsMainMenu }) {
+export default function Menu({
+  isP1X,
+  setIsP1X,
+  setIsMainMenu,
+  setIsAgainstCPU,
+}) {
   return (
     <div className="mt-[119px] space-y-8">
       <img className="mx-auto" src={logo} alt="logo" />
@@ -48,15 +53,20 @@ export default function Menu({ isP1X, setIsP1X, setIsMainMenu }) {
       </div>
       <div className="flex flex-col gap-4">
         <button
-          disabled
-          className="h-14 rounded-15 bg-light-yellow pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-yellow-shadow disabled:opacity-50 disabled:shadow-none"
-          onClick={() => setIsMainMenu(false)}
+          className="h-14 rounded-15 bg-light-yellow pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-yellow-shadow"
+          onClick={() => {
+            setIsMainMenu(false);
+            setIsAgainstCPU(true);
+          }}
         >
           New Game (vs CPU)
         </button>
         <button
           className="h-14 rounded-15 bg-light-blue pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-blue-shadow"
-          onClick={() => setIsMainMenu(false)}
+          onClick={() => {
+            setIsMainMenu(false);
+            setIsAgainstCPU(false);
+          }}
         >
           New Game (vs Player)
         </button>

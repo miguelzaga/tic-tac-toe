@@ -11,18 +11,20 @@ const App = () => {
   const [isXNext, setIsXNext] = useState(true);
   const [isP1X, setIsP1X] = useState(false);
   const [squares, setSquares] = useState(Array(9).fill(null));
-  const [score, setScore] = useState({ x: 0, ties: 0, o: 0 });
+  const [score, setScore] = useState({ x: 0, tie: 0, o: 0 });
+  const [isAgainstCPU, setIsAgainstCPU] = useState(false);
 
   let [winner, winningPosition] = checkWinner(squares);
 
   return (
-    <div className="h-screen w-screen bg-dark-navy">
+    <div className="h-full w-full bg-dark-navy">
       <main className="mx-auto max-w-[460px] px-6 pb-32 pt-6">
         {isMainMenu ? (
           <Menu
             isP1X={isP1X}
             setIsP1X={setIsP1X}
             setIsMainMenu={setIsMainMenu}
+            setIsAgainstCPU={setIsAgainstCPU}
           />
         ) : (
           <div className="mx-auto w-max">
@@ -42,8 +44,13 @@ const App = () => {
               winningPosition={winningPosition}
               clickSquare={clickSquare}
               winner={winner}
+              cpuPlay={cpuPlay}
             />
-            <Score currScore={score} isP1X={isP1X} />
+            <Score
+              currScore={score}
+              isP1X={isP1X}
+              isAgainstCPU={isAgainstCPU}
+            />
           </div>
         )}
       </main>
@@ -100,7 +107,6 @@ const App = () => {
     if (winner) {
       score[winner] += 1;
     }
-
     setScore(score);
     setSquares(Array(9).fill(null));
     setIsXNext(true);
@@ -108,8 +114,20 @@ const App = () => {
 
   function quitGame() {
     resetGame();
-    setScore({ x: 0, ties: 0, o: 0 });
+    setScore({ x: 0, tie: 0, o: 0 });
     setIsMainMenu(true);
+  }
+
+  function cpuPlay() {
+    if (isAgainstCPU && !isMainMenu) {
+      if ((isXNext && !isP1X) || (!isXNext && isP1X)) {
+        let randomMove = Math.floor(Math.random() * 9);
+        while (squares[randomMove]) {
+          randomMove = Math.floor(Math.random() * 9);
+        }
+        clickSquare(randomMove);
+      }
+    }
   }
 };
 
