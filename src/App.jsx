@@ -10,11 +10,12 @@ const App = () => {
   const [isMainMenu, setIsMainMenu] = useState(true);
   const [isXNext, setIsXNext] = useState(true);
   const [isP1X, setIsP1X] = useState(false);
+  const [isAgainstCPU, setIsAgainstCPU] = useState(false);
   const [squares, setSquares] = useState(Array(9).fill(null));
   const [score, setScore] = useState({ x: 0, tie: 0, o: 0 });
-  const [isAgainstCPU, setIsAgainstCPU] = useState(false);
 
   let [winner, winningPosition] = checkWinner(squares);
+  const isP1Turn = (isXNext && isP1X) || (!isXNext && !isP1X);
 
   return (
     <div className="h-full min-h-screen w-full bg-dark-navy">
@@ -122,14 +123,16 @@ const App = () => {
   }
 
   function cpuPlay() {
-    if (isAgainstCPU && !isMainMenu) {
-      if ((isXNext && !isP1X) || (!isXNext && isP1X)) {
-        let randomMove = Math.floor(Math.random() * 9);
-        while (squares[randomMove]) {
-          randomMove = Math.floor(Math.random() * 9);
+    if (!isP1Turn) {
+      let availableSquares = squares.reduce((currArr, squareVal, i) => {
+        if (!squareVal) {
+          currArr.push(i);
         }
-        clickSquare(randomMove);
-      }
+        return currArr;
+      }, []);
+      let randomIndex = Math.floor(Math.random() * availableSquares.length);
+      let randomMove = availableSquares[randomIndex];
+      clickSquare(randomMove);
     }
   }
 };
