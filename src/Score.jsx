@@ -30,24 +30,15 @@ function ScoreCell({ title, score, bgColor }) {
 }
 
 function getTitles(isAgainstCPU, isP1X) {
-  let xTitle;
-  let oTitle;
-
   if (isAgainstCPU) {
     if (isP1X) {
-      xTitle = "You";
-      oTitle = "CPU";
+      return ["You", "CPU"];
     } else {
-      xTitle = "CPU";
-      oTitle = "You";
+      return ["CPU", "You"];
     }
   } else if (isP1X) {
-    xTitle = "P1";
-    oTitle = "P2";
+    return ["P1", "P2"];
   } else {
-    xTitle = "P2";
-    oTitle = "P1";
+    return ["P2", "P1"];
   }
-
-  return [xTitle, oTitle];
 }

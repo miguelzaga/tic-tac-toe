@@ -3,7 +3,7 @@ import { useState } from "react";
 import Score from "./Score";
 import Header from "./Header";
 import Modal from "./Modal";
-import Board from "./Board";
+import Square from "./Square";
 import Menu from "./Menu";
 
 const App = () => {
@@ -16,6 +16,8 @@ const App = () => {
 
   let [winner, winningPosition] = checkWinner(squares);
   const isP1Turn = (isXNext && isP1X) || (!isXNext && !isP1X);
+
+  cpuPlay();
 
   return (
     <div className="h-full min-h-screen w-full bg-dark-navy">
@@ -42,14 +44,23 @@ const App = () => {
             ) : (
               ""
             )}
-            <Board
-              squares={squares}
-              winningPosition={winningPosition}
-              clickSquare={clickSquare}
-              winner={winner}
-              isAgainstCPU={isAgainstCPU}
-              cpuPlay={cpuPlay}
-            />
+
+            <div className="grid grid-cols-3 gap-5">
+              {squares.map((value, i) => {
+                let winnerPosition;
+                if (winningPosition && winningPosition.includes(i)) {
+                  winnerPosition = winner;
+                }
+                return (
+                  <Square
+                    key={`square-${i}`}
+                    value={value}
+                    handleClick={() => clickSquare(i)}
+                    winner={winnerPosition}
+                  />
+                );
+              })}
+            </div>
             <Score
               currScore={score}
               isP1X={isP1X}
