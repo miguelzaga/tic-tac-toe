@@ -17,7 +17,7 @@ const App = () => {
   let [winner, winningPosition] = checkWinner(squares);
 
   return (
-    <div className="h-full w-full bg-dark-navy">
+    <div className="h-full min-h-screen w-full bg-dark-navy">
       <main className="mx-auto max-w-[460px] px-6 pb-32 pt-6">
         {isMainMenu ? (
           <Menu
@@ -25,6 +25,7 @@ const App = () => {
             setIsP1X={setIsP1X}
             setIsMainMenu={setIsMainMenu}
             setIsAgainstCPU={setIsAgainstCPU}
+            cpuPlay={cpuPlay}
           />
         ) : (
           <div className="mx-auto w-max">
@@ -35,6 +36,7 @@ const App = () => {
                 handleReset={resetGame}
                 handleQuit={quitGame}
                 isP1X={isP1X}
+                isAgainstCPU={isAgainstCPU}
               />
             ) : (
               ""
@@ -44,6 +46,7 @@ const App = () => {
               winningPosition={winningPosition}
               clickSquare={clickSquare}
               winner={winner}
+              isAgainstCPU={isAgainstCPU}
               cpuPlay={cpuPlay}
             />
             <Score
