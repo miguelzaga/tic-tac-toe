@@ -16,7 +16,7 @@ export default function Menu({
             onClick={() => {
               setIsP1X(true);
             }}
-            className={`${isP1X ? "bg-silver text-dark-navy" : ""} flex-1 rounded-10`}
+            className={`${isP1X ? "bg-silver text-dark-navy" : "hover:bg-dark-navy-hover"} flex-1 rounded-10`}
           >
             <svg
               viewBox="0 0 65 65"
@@ -34,7 +34,7 @@ export default function Menu({
             onClick={() => {
               setIsP1X(false);
             }}
-            className={`${isP1X ? "" : "bg-silver text-dark-navy"} flex-1 rounded-10`}
+            className={`${isP1X ? "hover:bg-dark-navy-hover" : "bg-silver text-dark-navy"} flex-1 rounded-10`}
           >
             {" "}
             <svg
@@ -53,7 +53,7 @@ export default function Menu({
       </div>
       <div className="flex flex-col gap-4 md:gap-5">
         <button
-          className="tracking-1 md:tracking-1.25 h-14 rounded-15 bg-light-yellow pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-yellow-shadow md:h-[67px] md:text-xl"
+          className="tracking-1 md:tracking-1.25 h-14 rounded-15 bg-light-yellow pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-yellow-shadow hover:bg-light-yellow-hover md:h-[67px] md:text-xl"
           onClick={() => {
             setIsMainMenu(false);
             setIsAgainstCPU(true);
@@ -62,7 +62,7 @@ export default function Menu({
           New Game (vs CPU)
         </button>
         <button
-          className="tracking-1 md:tracking-1.25 h-14 rounded-15 bg-light-blue pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-blue-shadow md:h-[67px] md:text-xl"
+          className="tracking-1 md:tracking-1.25 h-14 rounded-15 bg-light-blue pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-blue-shadow hover:bg-light-blue-hover md:h-[67px] md:text-xl"
           onClick={() => {
             setIsMainMenu(false);
             setIsAgainstCPU(false);

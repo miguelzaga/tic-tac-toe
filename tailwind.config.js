@@ -10,6 +10,7 @@ module.exports = {
       colors: {
         "dark-navy-shadow": "#10212A",
         "dark-navy": "#1A2A33",
+        "dark-navy-hover": "rgba(168, 191, 201, 0.05)",
         "semi-dark-navy": "#1F3641",
         silver: "#A8BFC9",
         "silver-hover": "#DBE8ED",
