@@ -21,7 +21,7 @@ const App = () => {
 
   return (
     <div className="h-full min-h-screen w-full bg-dark-navy">
-      <main className="mx-auto max-w-[460px] px-6 pb-32 pt-6">
+      <main className="mx-auto max-w-[508px] px-6 pb-32 pt-6">
         {isMainMenu ? (
           <Menu
             isP1X={isP1X}
@@ -55,7 +55,11 @@ const App = () => {
                   <Square
                     key={`square-${i}`}
                     value={value}
-                    handleClick={() => clickSquare(i)}
+                    handleClick={() => {
+                      if (isP1Turn) {
+                        clickSquare(i);
+                      }
+                    }}
                     winner={winnerPosition}
                   />
                 );
@@ -134,7 +138,7 @@ const App = () => {
   }
 
   function cpuPlay() {
-    if (!isP1Turn) {
+    if (isAgainstCPU && !isP1Turn) {
       let availableSquares = squares.reduce((currArr, squareVal, i) => {
         if (!squareVal) {
           currArr.push(i);
@@ -143,7 +147,9 @@ const App = () => {
       }, []);
       let randomIndex = Math.floor(Math.random() * availableSquares.length);
       let randomMove = availableSquares[randomIndex];
-      clickSquare(randomMove);
+      setTimeout(() => {
+        clickSquare(randomMove);
+      }, 300);
     }
   }
 };
