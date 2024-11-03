@@ -26,6 +26,12 @@ module.exports = {
         10: "0.625rem",
         15: "0.938rem",
       },
+      letterSpacing: {
+        1: "1px",
+        1.25: "1.25px",
+        1.5: "1.5px",
+        2.5: "2.5px",
+      },
     },
   },
   plugins: [],

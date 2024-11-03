@@ -16,26 +16,26 @@ export default function Modal({
     <div className="absolute left-0 top-0 flex h-screen w-screen items-center bg-black bg-opacity-50 uppercase">
       <div className="flex w-full flex-col items-center bg-semi-dark-navy text-center">
         <div className="pb-12 pt-10">
-          <p className="mb-4 font-bold text-silver">
+          <p className="md:tracking-1 mb-4 text-sm font-bold tracking-wider text-silver md:text-base">
             {messages && messages.playerMsg}
           </p>
           <div className="mb-6 flex items-center justify-center gap-2">
             {icon}
             <p
-              className={`text-2xl font-extrabold leading-none tracking-widest ${textColor}`}
+              className={`md:tracking-2.5 tracking-1.5 text-2xl font-extrabold leading-none ${textColor}`}
             >
               {messages && messages.markMsg}
             </p>
           </div>
           <div className="flex justify-center gap-4 leading-none text-dark-navy">
             <button
-              className="h-12 rounded-lg bg-silver p-4 font-bold uppercase shadow-custom-sm shadow-silver-shadow hover:bg-silver-hover"
+              className="tracking-1 h-12 rounded-lg bg-silver p-4 font-bold uppercase shadow-custom-sm shadow-silver-shadow hover:bg-silver-hover"
               onClick={handleQuit}
             >
               {messages.buttonsMsg[0]}
             </button>
             <button
-              className="h-12 rounded-lg bg-light-yellow p-4 font-bold uppercase shadow-custom-sm shadow-light-yellow-shadow hover:bg-light-yellow-hover"
+              className="tracking-1 h-12 rounded-lg bg-light-yellow p-4 font-bold uppercase shadow-custom-sm shadow-light-yellow-shadow hover:bg-light-yellow-hover"
               onClick={handleReset}
             >
               {messages.buttonsMsg[1]}

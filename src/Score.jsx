@@ -2,7 +2,7 @@ export default function Score({ currScore, isP1X, isAgainstCPU }) {
   const [xTitle, oTitle] = getTitles(isAgainstCPU, isP1X);
 
   return (
-    <div className="child- mt-5 grid grid-cols-3 gap-5">
+    <div className="mt-5 grid grid-cols-3 gap-5">
       <ScoreCell
         title={`X (${xTitle})`}
         score={currScore.x}
@@ -21,10 +21,12 @@ export default function Score({ currScore, isP1X, isAgainstCPU }) {
 function ScoreCell({ title, score, bgColor }) {
   return (
     <div
-      className={`rounded-10 py-3 text-center leading-none text-dark-navy ${bgColor}`}
+      className={`rounded-10 py-3 text-center leading-none text-dark-navy ${bgColor} w-full`}
     >
       <p className="text-xs uppercase tracking-wider">{title}</p>
-      <p className="text-xl font-bold leading-none">{score}</p>
+      <p className="tracking-1.25 md:tracking-1.5 text-xl font-bold leading-none">
+        {score}
+      </p>
     </div>
   );
 }

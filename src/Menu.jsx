@@ -7,11 +7,11 @@ export default function Menu({
   setIsAgainstCPU,
 }) {
   return (
-    <div className="mt-[119px] space-y-8">
+    <div className="space-y-8 md:space-y-10">
       <img className="mx-auto" src={logo} alt="logo" />
       <div className="rounded-15 bg-semi-dark-navy p-6 text-center uppercase text-silver shadow-custom-lg shadow-dark-navy-shadow">
-        <h1 className="mb-6 font-bold">Pick player 1&apos;s mark</h1>
-        <div className="mb-4 flex h-[72px] rounded-10 bg-dark-navy px-2 py-[9px]">
+        <h1 className="tracking-1 mb-6 font-bold">Pick player 1&apos;s mark</h1>
+        <div className="mb-[17px] flex h-[72px] rounded-10 bg-dark-navy px-2 py-[9px]">
           <button
             onClick={() => {
               setIsP1X(true);
@@ -49,11 +49,11 @@ export default function Menu({
             </svg>
           </button>
         </div>
-        <p className="pt-px text-sm">Remember: X goes first</p>
+        <p className="text-sm tracking-wider">Remember: X goes first</p>
       </div>
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 md:gap-5">
         <button
-          className="h-14 rounded-15 bg-light-yellow pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-yellow-shadow"
+          className="tracking-1 md:tracking-1.25 h-14 rounded-15 bg-light-yellow pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-yellow-shadow md:h-[67px] md:text-xl"
           onClick={() => {
             setIsMainMenu(false);
             setIsAgainstCPU(true);
@@ -62,7 +62,7 @@ export default function Menu({
           New Game (vs CPU)
         </button>
         <button
-          className="h-14 rounded-15 bg-light-blue pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-blue-shadow"
+          className="tracking-1 md:tracking-1.25 h-14 rounded-15 bg-light-blue pb-2 font-bold uppercase text-dark-navy shadow-custom-lg shadow-light-blue-shadow md:h-[67px] md:text-xl"
           onClick={() => {
             setIsMainMenu(false);
             setIsAgainstCPU(false);

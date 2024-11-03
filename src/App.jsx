@@ -20,8 +20,8 @@ const App = () => {
   cpuPlay();
 
   return (
-    <div className="h-full min-h-screen w-full bg-dark-navy">
-      <main className="mx-auto max-w-[508px] px-6 pb-32 pt-6">
+    <div className="flex h-full min-h-screen w-full items-center bg-dark-navy">
+      <main className="mx-auto w-full max-w-[508px] p-6">
         {isMainMenu ? (
           <Menu
             isP1X={isP1X}
