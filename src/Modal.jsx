@@ -29,13 +29,13 @@ export default function Modal({
           </div>
           <div className="flex justify-center gap-4 leading-none text-dark-navy">
             <button
-              className="tracking-1 h-12 rounded-[10px] bg-silver p-4 font-bold uppercase shadow-custom-sm shadow-silver-shadow hover:bg-silver-hover"
+              className="tracking-1 h-12 rounded-[10px] bg-silver p-4 font-bold uppercase shadow-custom-sm shadow-silver-shadow transition ease-out hover:bg-silver-hover"
               onClick={handleQuit}
             >
               {messages.buttonsMsg[0]}
             </button>
             <button
-              className="tracking-1 h-12 rounded-[10px] bg-light-yellow p-4 font-bold uppercase shadow-custom-sm shadow-light-yellow-shadow hover:bg-light-yellow-hover"
+              className="tracking-1 h-12 rounded-[10px] bg-light-yellow p-4 font-bold uppercase shadow-custom-sm shadow-light-yellow-shadow transition ease-out hover:bg-light-yellow-hover"
               onClick={handleReset}
             >
               {messages.buttonsMsg[1]}

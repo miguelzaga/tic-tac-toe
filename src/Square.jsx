@@ -14,7 +14,7 @@ export default function Square({ value, handleClick, winner, isXNext }) {
         ""
       ) : (
         <img
-          className="invisible absolute -z-10 group-hover:visible"
+          className="invisible absolute -z-10 w-10 group-hover:visible md:w-16"
           src={isXNext ? iconXOutline : iconOOutline}
           alt=""
         />
