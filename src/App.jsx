@@ -20,8 +20,8 @@ const App = () => {
   cpuPlay();
 
   return (
-    <div className="flex h-full min-h-screen w-full items-center bg-dark-navy">
-      <main className="mx-auto w-full max-w-[508px] p-6">
+    <div className="flex h-full min-h-screen w-full items-center bg-dark-navy p-6">
+      <main className="mx-auto w-full max-w-[328px] md:max-w-[460px]">
         {isMainMenu ? (
           <Menu
             isP1X={isP1X}
@@ -31,7 +31,7 @@ const App = () => {
             cpuPlay={cpuPlay}
           />
         ) : (
-          <div className="mx-auto w-max">
+          <div className="mx-auto">
             <Header isXNext={isXNext} handleReset={resetGame} />
             {winner ? (
               <Modal
@@ -45,7 +45,7 @@ const App = () => {
               ""
             )}
 
-            <div className="grid grid-cols-3 gap-5">
+            <div className="grid grid-cols-3 grid-rows-3 gap-5">
               {squares.map((value, i) => {
                 let winnerPosition;
                 if (winningPosition && winningPosition.includes(i)) {
