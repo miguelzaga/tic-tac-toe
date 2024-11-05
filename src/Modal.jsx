@@ -13,7 +13,7 @@ export default function Modal({
   let messages = winner && getMessages(isAgainstCPU, winner, isP1X);
 
   return (
-    <div className="absolute left-0 top-0 flex h-screen w-screen items-center bg-black bg-opacity-50 uppercase">
+    <div className="absolute left-0 top-0 z-20 flex h-screen w-screen items-center bg-black bg-opacity-50 uppercase">
       <div className="flex w-full flex-col items-center bg-semi-dark-navy text-center">
         <div className="pb-12 pt-10 md:p-[45px]">
           <p className="md:tracking-1 mb-4 text-sm font-bold tracking-wider text-silver md:mb-[23px] md:text-base">
@@ -91,12 +91,9 @@ export default function Modal({
       msgObj["playerMsg"] = "Player 1 wins!";
     } else if (winner === "tie") {
       msgObj["markMsg"] = "Round tied";
-    }
-    {
+    } else {
       msgObj["playerMsg"] = "Player 2 wins!";
     }
-
-    console.log(msgObj);
 
     return msgObj;
   }

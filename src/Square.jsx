@@ -1,12 +1,24 @@
-export default function Square({ value, handleClick, winner }) {
+import iconXOutline from "../assets/icon-x-outline.svg";
+import iconOOutline from "../assets/icon-o-outline.svg";
+
+export default function Square({ value, handleClick, winner, isXNext }) {
   let icon = getIcon(value);
   let color = getColor(winner);
 
   return (
     <button
       onClick={handleClick}
-      className={`flex items-center justify-center bg-${color ?? "semi-dark-navy"} shadow-${color ?? "dark-navy"}-shadow h-24 w-full rounded-10 pb-2 shadow-custom-lg md:h-[140px]`}
+      className={`z-0 flex items-center justify-center bg-${color ?? "semi-dark-navy"} shadow-${color ?? "dark-navy"}-shadow group relative h-24 w-full rounded-10 pb-2 shadow-custom-lg md:h-[140px]`}
     >
+      {value ? (
+        ""
+      ) : (
+        <img
+          className="invisible absolute -z-10 group-hover:visible"
+          src={isXNext ? iconXOutline : iconOOutline}
+          alt=""
+        />
+      )}
       {icon ?? ""}
     </button>
   );

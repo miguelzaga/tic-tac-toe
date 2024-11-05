@@ -55,8 +55,9 @@ const App = () => {
                   <Square
                     key={`square-${i}`}
                     value={value}
+                    isXNext={isXNext}
                     handleClick={() => {
-                      if (isP1Turn) {
+                      if (!isAgainstCPU || (isAgainstCPU && isP1Turn)) {
                         clickSquare(i);
                       }
                     }}
