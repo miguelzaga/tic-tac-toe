@@ -146,11 +146,77 @@ const App = () => {
         }
         return currArr;
       }, []);
-      let randomIndex = Math.floor(Math.random() * availableSquares.length);
-      let randomMove = availableSquares[randomIndex];
+
+      let move = getOptimalMove(availableSquares);
+      if (move === undefined) {
+        let randomIndex = Math.floor(Math.random() * availableSquares.length);
+        move = availableSquares[randomIndex];
+      }
       setTimeout(() => {
-        clickSquare(randomMove);
+        clickSquare(move);
       }, 300);
+    }
+  }
+
+  function getOptimalMove() {
+    const winningPositions = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
+
+    let closePositions = winningPositions.reduce((result, position) => {
+      let [a, b, c] = position;
+      if (squares[a] && squares[a] === squares[b] && !squares[c]) {
+        let mark = squares[a];
+        let empty = c;
+        if (result[mark]) {
+          result[mark].push[empty];
+        } else {
+          result[mark] = [empty];
+        }
+      }
+      if (squares[a] && squares[a] === squares[c] && !squares[b]) {
+        let mark = squares[a];
+        let empty = b;
+
+        if (result[mark]) {
+          result[mark].push[b];
+        } else {
+          result[mark] = [empty];
+        }
+      }
+      if (squares[b] && squares[b] === squares[c] && !squares[a]) {
+        let mark = squares[b];
+        let empty = a;
+
+        if (result[mark]) {
+          result[mark].push[a];
+        } else {
+          result[mark] = [empty];
+        }
+      }
+
+      return result;
+    }, {});
+
+    if (isP1X) {
+      if (closePositions && closePositions.o) {
+        return closePositions.o[0];
+      } else if (closePositions && closePositions.x) {
+        return closePositions.x[0];
+      }
+    } else {
+      if (closePositions && closePositions.x) {
+        return closePositions.x[0];
+      } else if (closePositions && closePositions.o) {
+        return closePositions.o[0];
+      }
     }
   }
 };
