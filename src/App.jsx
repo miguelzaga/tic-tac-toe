@@ -141,15 +141,15 @@ const App = () => {
 
   function cpuPlay() {
     if (isAgainstCPU && !isP1Turn) {
-      let availableSquares = squares.reduce((currArr, squareVal, i) => {
-        if (!squareVal) {
-          currArr.push(i);
-        }
-        return currArr;
-      }, []);
-
-      let move = getOptimalMove(availableSquares);
+      let move = getOptimalMove();
       if (move === undefined) {
+        let availableSquares = squares.reduce((currArr, squareVal, i) => {
+          if (!squareVal) {
+            currArr.push(i);
+          }
+          return currArr;
+        }, []);
+
         let randomIndex = Math.floor(Math.random() * availableSquares.length);
         move = availableSquares[randomIndex];
       }
