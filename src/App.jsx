@@ -1,10 +1,11 @@
 import { createRoot } from "react-dom/client";
 import { useState } from "react";
-import Score from "./Score";
-import Header from "./Header";
-import Modal from "./Modal";
-import Square from "./Square";
-import Menu from "./Menu";
+import "./style.css";
+import Score from "./components/Score";
+import Header from "./components/Header";
+import Modal from "./components/Modal";
+import Square from "./components/Square";
+import Menu from "./components/Menu";
 
 const App = () => {
   const [isMainMenu, setIsMainMenu] = useState(true);
